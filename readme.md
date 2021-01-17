@@ -34,11 +34,13 @@ str，指定所使用的相似度计算模型，默认为"ernie"
 - similarity_calculation  
 `similarity_calculation`接口用于对外提供相似度计算服务，参数及返回如下：
 ```text
+method:
+    post
 请求参数：
     text_list1-->list<str>
     text_list2-->list<str>
 Returns:
     similarities-->list<float>
 ```
-
+可以发起一个post请求`{ip}:6100/similarity_calculation`测试
    
