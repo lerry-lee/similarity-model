@@ -14,8 +14,8 @@ def get_parser():
     命令行参数
     """
     parser = argparse.ArgumentParser(description="相似度模型服务启动参数")
-    parser.add_argument("port", type=int, default=6100, help="服务对外访问端口")
-    parser.add_argument("model", type=str, default="ernie", help="所使用的相似度计算模型")
+    parser.add_argument("port", type=int, default=6100, required=False, help="服务对外访问端口")
+    parser.add_argument("model", type=str, default="ernie", required=False, help="所使用的相似度计算模型")
 
     return parser
 
@@ -24,13 +24,13 @@ def get_parser():
 def similarity_calculation():
     """
     请求参数：
-        text1_list-->list<str>
-        text2_list-->list<str>
+        text_list1-->list<str>
+        text_list2-->list<str>
     Returns:
         similarities-->list<float>
     """
-    text1_list = request.form.getlist("text1_list")
-    text2_list = request.form.getlist("text2_list")
+    text1_list = request.form.getlist("text_list1")
+    text2_list = request.form.getlist("text_list2")
 
     return init_model.predict(text1_list, text2_list)
 

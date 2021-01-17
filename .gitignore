@@ -2,3 +2,4 @@ tmp/
 
 # pycharm
 .idea/
+__pycache__/
