@@ -22,10 +22,10 @@ similarities[prob1,prob2,...]
 python server.py -port 6100 -model ernie
 ```
 其中可选参数有两个,`-p`和`-model`，可以使用`python server.py -h`查看参数说明，下面直接介绍它们的含义：
-- port 
+- port  
 int，服务对外访问端口，默认为6100
   
-- model 
+- model  
 str，所使用的相似度计算模型，默认为"ernie"
    
 ### 接口说明
