@@ -8,9 +8,9 @@ text_list2:[list2_text1,list2_text1,...]
 ```
 - 输出
 ```text
-similarities[prob1,prob2,...]
+scores[prob1,prob2,...]
 ```
-其中，`prob1`为`list1_text1`和`list2_text1`的语义相似度
+其中，`prob1`为`list1_text1`和`list2_text1`的语义相似度得分
 
 ### 启动步骤
 1. 前置条件
@@ -41,7 +41,7 @@ method:
     text_list2-->list<str>
 Returns:
     {
-        "similarities":similarities-->list<float>
+        "scores":similarities-->list<float>
     }
 ```
 可以发起一个post请求`{ip}:6100/similarity_calculation`测试

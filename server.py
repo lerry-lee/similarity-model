@@ -28,7 +28,7 @@ def similarity_calculation():
         text_list2-->list<str>
     Returns:
         {
-            "similarities":similarities-->list<float>
+            "scores":similarities-->list<float>
         }
     """
     text_list1 = request.form.getlist("text_list1")
@@ -36,8 +36,8 @@ def similarity_calculation():
 
     similarities = ernie.predict(init_model=init_model, text_list1=text_list1, text_list2=text_list2)
 
-    # 将JSON输出转换为Response 具有application / json mimetype的对象
-    return jsonify(similarities=similarities)
+    # 将JSON输出转换为Response具有 application/json mimetype的对象
+    return jsonify(scores=similarities)
 
 
 def ge_model_handler(model_name):
