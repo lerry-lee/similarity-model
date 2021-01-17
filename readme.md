@@ -19,16 +19,16 @@ similarities[prob1,prob2,...]
 
 2. 在终端上进入该项目的根目录，然后执行命令
 ```shell
-python server.py -port 6100 -model ernie
+python server.py --port 6100 --model ernie
 ```
-其中可选参数有两个,`-port`和`-model`，它们的含义如下：
+其中可选参数有两个,`--port`和`--model`，它们的含义如下：
 - port  
 int，指定服务对外访问端口，默认为6100
   
 - model  
 str，指定所使用的相似度计算模型，默认为"ernie"
   
-也可以使用`python server.py -h`查看参数说明
+也可以使用`python server.py --help`查看参数说明
    
 ### 接口说明
 - similarity_calculation  
@@ -40,7 +40,9 @@ method:
     text_list1-->list<str>
     text_list2-->list<str>
 Returns:
-    similarities-->list<float>
+    {
+        "similarities":similarities-->list<float>
+    }
 ```
 可以发起一个post请求`{ip}:6100/similarity_calculation`测试
    

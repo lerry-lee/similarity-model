@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import argparse
 import ernie.ernie_handler as ernie
 
@@ -14,8 +14,8 @@ def get_parser():
     命令行参数
     """
     parser = argparse.ArgumentParser(description="相似度模型服务启动参数")
-    parser.add_argument("port", type=int, default=6100, required=False, help="服务对外访问端口")
-    parser.add_argument("model", type=str, default="ernie", required=False, help="所使用的相似度计算模型")
+    parser.add_argument("--port", type=int, default=6100, required=False, help="服务对外访问端口")
+    parser.add_argument("--model", type=str, default="ernie", required=False, help="所使用的相似度计算模型")
 
     return parser
 
@@ -27,31 +27,35 @@ def similarity_calculation():
         text_list1-->list<str>
         text_list2-->list<str>
     Returns:
-        similarities-->list<float>
+        {
+            "similarities":similarities-->list<float>
+        }
     """
-    text1_list = request.form.getlist("text_list1")
-    text2_list = request.form.getlist("text_list2")
+    text_list1 = request.form.getlist("text_list1")
+    text_list2 = request.form.getlist("text_list2")
 
-    return init_model.predict(text1_list, text2_list)
+    similarities = ernie.predict(init_model=init_model, text_list1=text_list1, text_list2=text_list2)
+
+    # 将JSON输出转换为Response 具有application / json mimetype的对象
+    return jsonify(similarities=similarities)
 
 
-def ge_model_handler(model):
+def ge_model_handler(model_name):
     """
     获得模型的handler：封装模型初始化、预测等方法的py
     Args:
-        model: 模型名
+        model_name: 模型名
 
     Returns: 模型的handler
 
     """
-    if model == "ernie":
-        log.info("select ernie as similarity model")
+    if model_name == "ernie":
         return ernie
     # 可以类比扩展其他模型
-    elif model == "xx":
+    elif model_name == "xx":
         return
     else:
-        log.error("model\"{}\" not found", model)
+        log.error("model\"%s\" not found", model_name)
         return
 
 
@@ -65,6 +69,7 @@ if __name__ == "__main__":
     model_handler = ge_model_handler(model)
     # 模型初始化
     init_model = model_handler.init()
+    log.info("%s模型初始化完成", model)
 
     # 启动server
     app.run(debug=True, port=port)

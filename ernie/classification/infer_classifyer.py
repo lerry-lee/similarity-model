@@ -22,6 +22,7 @@ import os
 import numpy as np
 import logging
 import multiprocessing
+import time
 
 # NOTE(paddle-dev): All of these flags should be
 # set before `import paddle`. Otherwise, it would
@@ -120,9 +121,6 @@ def main(args):
     return reader, predictor
 
 
-import time
-
-
 # 持续预测
 def run_predict(args):
     predict_data_generator = args.reader.data_generator(
@@ -192,8 +190,6 @@ def model_init(args_dict):
     args.display()  # 打印参数
     reader, predictor = main(args)
     args.model_init(reader, predictor)
-
-    log.info("model load finished")
 
     return args
 

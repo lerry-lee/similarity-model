@@ -6,6 +6,7 @@
 
 from ernie.classification.infer_classifyer import model_init, model_predict
 import json
+import numpy as np
 
 model_conf = "conf/model_conf.json"
 
@@ -23,18 +24,24 @@ def init():
     return model_init(args)
 
 
-def predict(text1_list, text2_list):
+def predict(init_model, text_list1, text_list2):
     """
     使用模型预测，计算两个文本的相似度
     Args:
-        text1_list: 文本1列表
-        text2_list: 文本2列表
+        init_model: 初始化的模型
+        text_list1: 文本1列表
+        text_list2: 文本2列表
 
     Returns: 相似度列表
 
     """
     predict_set = []
-    for text1, text2 in zip(text1_list, text2_list):
+    for text1, text2 in zip(text_list1, text_list2):
         predict_set.append(text1 + "\t" + text2 + "\t0")
 
-    return model_predict(predict_set)
+    init_model.predict_set = predict_set
+
+    probs = model_predict(init_model)
+    probs_float64 = np.asarray(probs, dtype=float).tolist()
+
+    return probs_float64
