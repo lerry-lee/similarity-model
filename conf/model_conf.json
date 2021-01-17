@@ -1,0 +1,9 @@
+{
+  "ernie": {
+    "use_cuda": true,
+    "batch_size": 64,
+    "init_checkpoint": "data/ernie/checkpoints/Add36x-Cchen230x-9e-5_Step180",
+    "pretrained_model": "data/ernie/pretrained_model",
+    "save_inference_model_path": "data/ernie/inference_models"
+  }
+}
