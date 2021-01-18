@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from gevent import pywsgi
 import argparse
 import ernie.ernie_handler as ernie
 
@@ -20,8 +21,13 @@ def get_parser():
     return parser
 
 
-@app.route("/similarity_calculation", methods=["post"])
-def similarity_calculation():
+@app.route("/hello", methods=["get"])
+def test():
+    return "hello world"
+
+
+@app.route("/calculate_similarity", methods=["post"])
+def calculate_similarity():
     """
     请求参数：
         text_list1-->list<str>
@@ -72,4 +78,5 @@ if __name__ == "__main__":
     log.info("%s模型初始化完成", model)
 
     # 启动server
-    app.run(debug=True, port=port)
+    server = pywsgi.WSGIServer(('', port), app)
+    server.serve_forever()

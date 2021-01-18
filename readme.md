@@ -31,8 +31,8 @@ str，指定所使用的相似度计算模型，默认为"ernie"
 也可以使用`python server.py --help`查看参数说明
    
 ### 接口说明
-- similarity_calculation  
-`similarity_calculation`接口用于对外提供相似度计算服务，参数及返回如下：
+- calculate_similarity  
+`calculate_similarity`接口用于对外提供相似度计算服务，参数及返回如下：
 ```text
 method:
     post
@@ -44,5 +44,5 @@ Returns:
         "scores":similarities-->list<float>
     }
 ```
-可以发起一个post请求`{ip}:6100/similarity_calculation`测试
+可以发起一个post请求`{ip}:{port}/calculate_similarity`测试
    
