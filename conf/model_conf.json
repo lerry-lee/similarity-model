@@ -1,6 +1,6 @@
 {
   "ernie": {
-    "use_cuda": true,
+    "use_cuda": false,
     "batch_size": 64,
     "init_checkpoint": "data/ernie/checkpoints/Add36x-Cchen230x-9e-5_Step180",
     "ernie_config_path": "data/ernie/pretrained_model/ernie_config.json",
