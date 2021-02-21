@@ -69,3 +69,7 @@ Returns:
 
 - ERNIE 1.0 中文Base模型  
 包含预训练模型参数、词典 vocab.txt、模型配置 ernie_config.json，[下载地址](https://baidu-nlp.bj.bcebos.com/ERNIE_stable-1.0.1.tar.gz)
+
+- ERNIE官方源码地址  
+[Gitee](https://gitee.com/paddlepaddle/ERNIE/tree/repro/)
+[GitHub](https://github.com/PaddlePaddle/ERNIE)
