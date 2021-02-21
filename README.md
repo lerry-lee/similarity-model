@@ -45,7 +45,26 @@ Returns:
     }
 ```
 可以发起一个post请求`{ip}:{port}/calculate_similarity`测试
-   
+
+### 参数配置
+
+`conf/model_conf.json`配置了常见的模型参数，可以根据实际需求更改，然后重写模型加载前的参数读取方法即可。  
+下面给出`ernie`配置参数的示例，`use_cuda`表示是否使用GPU，`init_checkpoint`表示模型要加载的检查点（训练好的模型输出的变量、参数等数据），`ernie_config_path`和`vocab_path`是预训练模型的参数和词典，`save_inference_model_path`为模型推理时加载的模型文件。  
+如果没有训练，可以直接使用预训练模型进行推理预测，即`init_checkpoint`的路径改为预训练模型的`params`即可。
+
+```json
+{
+  "ernie": {
+    "use_cuda": true,
+    "batch_size": 32,
+    "init_checkpoint": "data/ernie/checkpoints/model1",
+    "ernie_config_path": "data/ernie/pretrained_model/ernie_config.json",
+    "vocab_path": "data/ernie/pretrained_model/vocab.txt",
+    "save_inference_model_path": "data/ernie/inference_models"
+  }
+}
+```
+
 ### 数据下载
 
 - ERNIE 1.0 中文Base模型  
