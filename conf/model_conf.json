@@ -2,7 +2,7 @@
   "ernie": {
     "use_cuda": true,
     "batch_size": 32,
-    "init_checkpoint": "data/ernie/checkpoints/model1",
+    "init_checkpoint": "data/ernie/pretrained_model/params",
     "ernie_config_path": "data/ernie/pretrained_model/ernie_config.json",
     "vocab_path": "data/ernie/pretrained_model/vocab.txt",
     "save_inference_model_path": "data/ernie/inference_models"
