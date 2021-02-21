@@ -14,7 +14,8 @@ scores[prob1,prob2,...]
 
 ### 启动步骤
 1. 前置条件
-- 深度学习模型所需的数据以及所依赖的环境
+- 深度学习模型所需的数据以及所依赖的环境  
+ernie需要的数据见下面的`数据下载`，依赖的环境为`paddlepadlle`深度学习框架，参考这里[快速安装](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/2.0/install/pip/windows-pip.html)
 - flask,gevent
 
 2. 在终端上进入该项目的根目录，然后执行命令
