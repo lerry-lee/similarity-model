@@ -455,13 +455,13 @@ def predict_wrapper(args, reader, exe, test_prog, test_pyreader, graph_vars,
                     f.write('{}\t{}\t{}\n'.format(id, s, p))
 
 
-from retrieval.sim.classification.utils.args import TrainArguments
+from ernie.classification.utils.args import TrainArguments
 
 
 def model_train(args_dict):
     prepare_logger(log)
-    prepare_log(log_dev)
-    prepare_log_train(log_train)
+    # prepare_log(log_dev)
+    # prepare_log_train(log_train)
     args = TrainArguments(args_dict)
     args.display()
     check_cuda(args.use_cuda)
