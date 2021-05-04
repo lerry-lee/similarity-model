@@ -1,4 +1,5 @@
 # 相似度模型服务
+
 ### 功能说明
 对两个文本列表进行相似度计算
 - 输入
@@ -13,16 +14,23 @@ scores[prob1,prob2,...]
 其中，`prob1`为`list1_text1`和`list2_text1`的语义相似度得分
 
 ### 启动步骤
-1. 前置条件
-- 深度学习模型所需的数据以及所依赖的环境  
-ernie需要的数据见下面的`数据下载`，依赖的环境为`paddlepadlle`深度学习框架，参考这里[快速安装](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/2.0/install/pip/windows-pip.html)
-- flask,gevent
 
-2. 在终端上进入该项目的根目录，然后执行命令
+1）前置条件
+
+- 深度学习模型所需的数据以及所依赖的环境  
+ernie需要的数据见下面的`数据下载`，依赖的环境为`paddlepadlle`深度学习框架，参考这里[快速安装](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/2.0/install/pip/windows-pip.html)  
+(由于这里的ernie源码使用的静态图版本，paddlepaddle安装的时候可以选1.8.5(最新的2.0可能存在默认动态图切换等问题))
+
+- flask,gevent(使用pip等安装即可)
+
+2）在终端上进入该项目的根目录，然后执行命令
+
 ```shell
 python server.py --port 6100 --model ernie
 ```
+
 其中可选参数有两个,`--port`和`--model`，它们的含义如下：
+
 - port  
 int，指定服务对外访问端口，默认为6100
   
@@ -32,6 +40,7 @@ str，指定所使用的相似度计算模型，默认为"ernie"
 也可以使用`python server.py --help`查看参数说明
    
 ### 接口说明
+
 - calculate_similarity  
 `calculate_similarity`接口用于对外提供相似度计算服务，参数及返回如下：
 ```text
@@ -72,5 +81,5 @@ Returns:
 包含预训练模型参数、词典 vocab.txt、模型配置 ernie_config.json，[下载地址](https://baidu-nlp.bj.bcebos.com/ERNIE_stable-1.0.1.tar.gz)
 
 - ERNIE官方源码地址  
-[Gitee](https://gitee.com/paddlepaddle/ERNIE/tree/repro/)
+[Gitee](https://gitee.com/paddlepaddle/ERNIE/tree/repro/)  
 [GitHub](https://github.com/PaddlePaddle/ERNIE)
