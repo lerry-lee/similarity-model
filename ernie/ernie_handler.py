@@ -7,6 +7,9 @@
 from ernie.classification.infer_classifyer import model_init, model_predict
 import json
 import numpy as np
+import paddle
+
+paddle.enable_static()
 
 model_conf = "conf/model_conf.json"
 
