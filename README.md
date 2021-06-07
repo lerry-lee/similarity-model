@@ -19,7 +19,7 @@ scores[prob1,prob2,...]
 
 - 深度学习模型所需的数据以及所依赖的环境  
 ernie需要的数据见下面的`数据下载`，依赖的环境为`paddlepadlle`深度学习框架，参考这里[快速安装](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/2.0/install/pip/windows-pip.html)  
-(由于这里的ernie源码使用的静态图版本，paddlepaddle安装的时候可以选1.8.5(最新的2.0可能存在默认动态图切换等问题))
+(由于这里的ernie源码使用的静态图版本，paddlepaddle安装的时候可以选1.8.5(最新的2.0可能存在默认动态图切换等问题(已在代码中处理，可以使用2.0处理静态图)))
 
 - flask,gevent(使用pip等安装即可)
 
