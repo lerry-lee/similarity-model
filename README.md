@@ -116,3 +116,12 @@ python server.py --port 6100 --model ernie
 | port | 6100 | 开放端口 |
 | model | ernie | 指定模型 |
 
+
+# 另附:训练demo
+
+项目根目录下`ernie_train.py`提供了训练ernie模型的方法，训练集和验证集的格式均为：s1`\t`s2`\t`label
+```
+北京有多少人	北京的人口数量是多少	1
+这个空气净化器有用吗？	空气刘海是怎么样的	0
+```
+
